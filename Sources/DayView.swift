@@ -27,7 +27,7 @@ public class DayView: UIView, TimelinePagerViewDelegate {
     /// Hides or shows header view
     public var isHeaderViewVisible = true {
         didSet {
-            headerHeight = isHeaderViewVisible ? DayView.headerVisibleHeight : 0
+            headerHeight = isHeaderViewVisible ? (style.header.swipeLabel.isVisible ? 60 : DayView.headerVisibleHeight) : 0
             dayHeaderView.isHidden = !isHeaderViewVisible
             setNeedsLayout()
             configureLayout()
