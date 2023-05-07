@@ -21,7 +21,7 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
 
     private var daySymbolsViewHeight: Double = 20
     private var pagingScrollViewHeight: Double = 40
-    private var swipeLabelViewHeight: Double = style.swipeLabel.isVisible ? 20 : 0
+    private var swipeLabelViewHeight: Double = 20
 
     private let daySymbolsView: DaySymbolsView
     private var pagingViewController = UIPageViewController(transitionStyle: .scroll,
@@ -50,7 +50,12 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
     }
 
     private func configure() {
-        [daySymbolsView, swipeLabelView, separator].forEach(addSubview)
+        let views = [daySymbolsView]
+        if style.swipeLabel.isVisible {
+            views.append(swipeLabelView)
+        }
+        views.append(separator)
+        views.forEach(addSubview)
         backgroundColor = style.backgroundColor
         configurePagingViewController()
     }
