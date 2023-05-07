@@ -55,6 +55,7 @@ public struct DaySymbolsStyle {
 public struct SwipeLabelStyle {
     public var textColor = SystemColors.label
     public var font = UIFont.systemFont(ofSize: 15)
+    public var isVisible = true
     public init() {}
 }
 
