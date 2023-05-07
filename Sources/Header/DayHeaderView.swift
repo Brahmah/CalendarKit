@@ -51,9 +51,7 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
 
     private func configure() {
         addSubview(daySymbolsView)
-        if style.swipeLabel.isVisible {
-            addSubview(swipeLabelView)
-        }
+        addSubview(swipeLabelView)
         addSubview(separator)
         backgroundColor = style.backgroundColor
         configurePagingViewController()
@@ -103,6 +101,7 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
         swipeLabelView.updateStyle(style.swipeLabel)
         (pagingViewController.viewControllers as? [DaySelectorController])?.forEach{$0.updateStyle(newStyle.daySelector)}
         backgroundColor = style.backgroundColor
+        swipeLabelViewHeight = style.swipeLabel.isVisible ? 20 : 0
         separator.backgroundColor = style.separatorColor
     }
 
