@@ -119,10 +119,19 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
                                  size: CGSize(width: bounds.width, height: separatorHeight))
     }
 
+    private var lockSizeClass: Bool = false
+
     public func transitionToHorizontalSizeClass(_ sizeClass: UIUserInterfaceSizeClass) {
-        currentSizeClass = sizeClass
-        daySymbolsView.isHidden = sizeClass == .regular
-        (pagingViewController.children as? [DaySelectorController])?.forEach{$0.transitionToHorizontalSizeClass(sizeClass)}
+        if !lockSizeClass {
+            currentSizeClass = sizeClass
+            daySymbolsView.isHidden = sizeClass == .regular
+            (pagingViewController.children as? [DaySelectorController])?.forEach{$0.transitionToHorizontalSizeClass(sizeClass)}
+        }
+    }
+
+    public func foreverTransitionToHorizontalSizeClass(_ sizeClass: UIUserInterfaceSizeClass) {
+        self.transitionToHorizontalSizeClass(.compact)
+        lockSizeClass = true
     }
 
     // MARK: DaySelectorDelegate
