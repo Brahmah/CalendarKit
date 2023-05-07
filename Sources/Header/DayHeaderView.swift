@@ -102,7 +102,7 @@ public final class DayHeaderView: UIView, DaySelectorDelegate, DayViewStateUpdat
         (pagingViewController.viewControllers as? [DaySelectorController])?.forEach{$0.updateStyle(newStyle.daySelector)}
         backgroundColor = style.backgroundColor
         swipeLabelViewHeight = style.swipeLabel.isVisible ? 20 : 0
-        daySymbolsViewHeight = style.swipeLabel.isVisible ? 20 : 0
+        pagingScrollViewHeight = style.swipeLabel.isVisible ? 40 : 20
         separator.backgroundColor = style.separatorColor
     }
 
